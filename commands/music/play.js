@@ -27,7 +27,7 @@ module.exports = class PlayCommand extends Command {
           validate: function(query) {
             return query.length > 0 && query.length < 200;
           }
-        }
+        },
       ]
     });
   }
@@ -66,7 +66,7 @@ module.exports = class PlayCommand extends Command {
             //
             message.guild.musicData.queue.push(
               PlayCommand.constructSongObj(video, voiceChannel)
-			  
+
             );
             // } else {
             //   return message.say(
@@ -171,25 +171,6 @@ module.exports = class PlayCommand extends Command {
         youtube
           .getVideoByID(videos[videoIndex - 1].id)
           .then(function(video) {
-            // // can be uncommented if you don't want the bot to play live streams
-            // if (video.raw.snippet.liveBroadcastContent === 'live') {
-            //   songEmbed.delete();
-            //   return message.say("I don't support live streams!");
-            // }
-
-            // // can be uncommented if you don't want the bot to play videos longer than 1 hour
-            // if (video.duration.hours !== 0) {
-            //   songEmbed.delete();
-            //   return message.say('I cannot play videos longer than 1 hour');
-            // }
-
-            // // can be uncommented if you don't want to limit the queue
-            // if (message.guild.musicData.queue.length > 10) {
-            //   songEmbed.delete();
-            //   return message.say(
-            //     'There are too many songs in the queue already, skip or wait a bit'
-            //   );
-            // }
             message.guild.musicData.queue.push(
               PlayCommand.constructSongObj(video, voiceChannel)
             );
